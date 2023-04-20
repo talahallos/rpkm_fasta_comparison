@@ -104,7 +104,7 @@ install.packages("AnnotationDbi")
 av <- available.packages(filters=list())
 av[av[, "Package"] == "AnnotationDbi", ]
 
-?getNames
+?getNames 
 
 sub("^>([^ ]+) .*", "\\1", selected_lines2) 
 fasta_names <- sub("^>([^ ]+) .*", "\\1", selected_lines2)
