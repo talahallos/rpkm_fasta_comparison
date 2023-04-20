@@ -1,3 +1,7 @@
+## Description:
+## Author:
+## Initiation date:
+
 #install.packages(‘AnaCoDa’)
 #download.packages(AnaCoDa, directory)
 library("AnaCoDa")
