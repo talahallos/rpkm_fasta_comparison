@@ -76,47 +76,31 @@ common_names_subset <- head(common_names, n=100)
 # rpkm_names
 # common_names
 
-
-for (line in fasta_names) {
-  position <- str_which(common_names, )
-}
-# Error in str_detect(string, pattern, negate = negate) : argument "pattern" is missing, with no default
-# changing pattern to line (next to common_names)
-
-
-
-
-
-#figure out things to this point--
-#connection to github. commit it to github then start to work on and change things 
+#now wanting to make a table where the matches and their position are highlighted.
 
 # Empty matches table created:
-fasta_match_pos_tbl <- tibble(name = NA, position = NA)
+fasta_match_pos_tbl <- tibble(name = NA, pos = NA)
 
-
+#only the first 10 lines to test
 for(name in fasta_names[1:10]) {
   pos <- str_which(rpkm_names, name)
   n_pos <- length(pos)
   if(n_pos !=1) pos <- NA
   fasta_match_pos_tbl <- add_row(fasta_match_pos_tbl, name = name, pos = pos)
 }
-# current output:
-# Error in `add_row()`:
-# ! New rows can't add columns.
-# ✖ Can't find column `pos` in `.data`.
-# Run `rlang::last_trace()` to see where the error occurred.
 
-
-match.tbl <- tibble(name = fasta_names, position = NA)
-
-for (name in fasta_names) {
-  position <- str_which(common_names, name)
-  print(position)
-  if (length(position) > 0) {
-    matches <- c(position, name)
-  }
-  print(matches)
+#now functional, whole thing
+for(name in fasta_names) {
+  pos <- str_which(rpkm_names, name)
+  n_pos <- length(pos)
+  if(n_pos !=1) pos <- NA
+  fasta_match_pos_tbl <- add_row(fasta_match_pos_tbl, name = name, pos = pos)
 }
+
+# to display more lines, use print(fasta_match_pos_tbl, n = #)
+
+
+
 
 print(matches)
 
