@@ -90,6 +90,18 @@ for (line in fasta_names) {
 #figure out things to this point--
 #connection to github. commit it to github then start to work on and change things 
 
+# Empty matches table created:
+fasta_match_pos_tbl <- tibble(name = NA, position = NA)
+
+
+for(name in fasta_names[1:10]) {
+  pos <- str_which(rpkm_names, name)
+  n_pos <- length(pos)
+  if(n_pos !=1) pos <- NA
+})
+# current output : Error: unexpected ')' in "if(n_pos !=1) pos <- NA"
+
+
 match.tbl <- tibble(name = fasta_names, position = NA)
 
 for (name in fasta_names) {
@@ -109,21 +121,5 @@ for (name in fasta_names) {
     matches <- c(position, line)
   }
 }
-
-
-
-
-#trying to make the getNames(genome) list into its own file
-mylist <- getNames(genome)
-write.csv(as.data.frame(mylist), "/Users/talahallos/Desktop/research/mylist", row.names = FALSE)
-my_list_from_file <- read.csv("/Users/talahallos/Desktop/research/mylist", header = TRUE, stringsAsFactors = FALSE)
-my_list_from_file
-
-
-
-
-
-
-
 
 
