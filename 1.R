@@ -68,22 +68,6 @@ fasta_names <- getNames(f_genome)
 
 
 
-
-
-txtgenome <- readLines("GSE75897_RiboZero_RPKMs.gz")
-indices <- grep("^Y", txtgenome)
-selected_lines <- txtgenome[indices]
-print(selected_lines)
-
-fastagenome <- readLines("orf_genomic_1000.fasta")
-indices2 <- grep("^>", fastagenome)
-length(indices2)
-print(indices2)
-selected_lines2 <- fastagenome[indices2]
-length(selected_lines2)
-print(selected_lines2)
-
-
 file_fasta <-
 sequences <- read.fasta("orf_genomic_1000.fasta")
 my_sequence <- sequences[["orf_genomic_fasta"]]
