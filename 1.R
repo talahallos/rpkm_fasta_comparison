@@ -2,8 +2,8 @@
 ## Author: Talah
 ## Initiation date: April 26
 
-#install.packages(‘AnaCoDa’)
-#download.packages(AnaCoDa, directory)
+install.packages("AnaCoDa")
+download.packages(AnaCoDa, directory)
 library("AnaCoDa")
 #install.packages("stringr")
 library(stringr)
@@ -63,51 +63,18 @@ fasta_genome <- head(readLines("/Users/talahallos/Desktop/research/orf_genomic_1
 f_genome <- initializeGenomeObject(file = "orf_genomic_1000.fasta")
 fasta_names <- getNames(f_genome)
 
-
-
-
-
-
-file_fasta <-
-sequences <- read.fasta("orf_genomic_1000.fasta")
-my_sequence <- sequences[["orf_genomic_fasta"]]
-print(my_sequence)
-#didn't work
-
-install.packages("AnnotationDbi")
-#output gives link https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
-av <- available.packages(filters=list())
-av[av[, "Package"] == "AnnotationDbi", ]
-
-?getNames 
-
-sub("^>([^ ]+) .*", "\\1", selected_lines2) 
-fasta_names <- sub("^>([^ ]+) .*", "\\1", selected_lines2)
-
-genome <- initializeGenomeObject(file = "orf_genomic_1000.fasta")
-fasta_names <- getNames(genome)
-
 common_names <- intersect(rpkm_names, fasta_names)
 length(common_names)
 #*****^^^ (rm())
 
+# Trying to sort out a smaller set of names, 100, to work with.
 common_names_subset <- head(common_names, n=100)
+# getNames(f_genome) being compared to txt.genome
 
-
-getNames(genome)
-#being compared to
-txt.genome
-
-# xxxxxx  common_lines <- intersect(txt.genome, fasta.genome)
-
+# Defined Variables:
 fasta_names
 rpkm_names
-matches
-
-for (line in fasta_names) {
-  position <- str_which(common_names, )
-}
-# Error in str_which(common_names, ) : could not find function "str_which"
+common_names
 
 
 for (line in fasta_names) {
@@ -115,6 +82,9 @@ for (line in fasta_names) {
 }
 # Error in str_detect(string, pattern, negate = negate) : argument "pattern" is missing, with no default
 # changing pattern to line (next to common_names)
+
+
+
 
 
 #figure out things to this point--
