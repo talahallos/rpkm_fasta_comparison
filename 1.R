@@ -72,9 +72,9 @@ common_names_subset <- head(common_names, n=100)
 # getNames(f_genome) being compared to txt.genome
 
 # Defined Variables:
-fasta_names
-rpkm_names
-common_names
+# fasta_names
+# rpkm_names
+# common_names
 
 
 for (line in fasta_names) {
@@ -98,8 +98,13 @@ for(name in fasta_names[1:10]) {
   pos <- str_which(rpkm_names, name)
   n_pos <- length(pos)
   if(n_pos !=1) pos <- NA
-})
-# current output : Error: unexpected ')' in "if(n_pos !=1) pos <- NA"
+  fasta_match_pos_tbl <- add_row(fasta_match_pos_tbl, name = name, pos = pos)
+}
+# current output:
+# Error in `add_row()`:
+# ! New rows can't add columns.
+# ✖ Can't find column `pos` in `.data`.
+# Run `rlang::last_trace()` to see where the error occurred.
 
 
 match.tbl <- tibble(name = fasta_names, position = NA)
