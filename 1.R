@@ -1,6 +1,6 @@
-## Description:
-## Author:
-## Initiation date:
+## Description: 
+## Author: Talah
+## Initiation date: April 26
 
 #install.packages(‘AnaCoDa’)
 #download.packages(AnaCoDa, directory)
@@ -13,6 +13,12 @@ library(tibble)
 #install.packages("seqinr")
 library(seqinr)
 install.packages("AnnotationDbi")
+
+# File Names:
+# GSE75897_RiboZero_RPKMs.txt
+# GSE75897_RiboZero_RPKMs.txt
+# orf_genomic_1000.fasta
+
 
 
 
@@ -30,12 +36,6 @@ model <- initializeModelObject(parameter = parameter, model = "ROC")
 parameter <- initializeParameterObject(genome = genome, sphi = c(0.5, 2), num.mixtures = 2, gene.assignment = sample.int(2, length(genome), replace = T))
 
 
-#ERROR message / not able to run = 
-#Error in genome::readObservedPhiValues: Can not open file synthesis_values.csv
-#synthesis/expression
-genome <- initializeGenomeObject(file = "orf_genomic_1000.fasta", observed.expression.file = "synthesis_values.csv")
-
-
 parameter <- initializeParameterObject(genome = genome, sphi = 1, num.mixtures = 1, gene.assignment = rep(1, length(genome)), init.sepsilon = sepsilon)
 
 model <- initializeModelObject(parameter = parameter, model = "ROC",  fix.observation.noise = TRUE)
@@ -45,9 +45,6 @@ gz_path <- "/Users/talahallos/Desktop/research/GSE75897_RiboZero_RPKMs.gz"
  # Open a connection to the output .gz file using gzfile()
 gz_conn <- gzfile(gz_path, "wb")
 
-#COULD NOT GET THIS TO RUN
-file_contents <- readLines(txt_path)
-writeLines(file_contents, gz_conn)
 
 gz_conn <- gzfile(gz_path, "rb")
 file_contents <- readLines(gz_conn)
@@ -177,14 +174,6 @@ mylist <- getNames(genome)
 write.csv(as.data.frame(mylist), "/Users/talahallos/Desktop/research/mylist", row.names = FALSE)
 my_list_from_file <- read.csv("/Users/talahallos/Desktop/research/mylist", header = TRUE, stringsAsFactors = FALSE)
 my_list_from_file
-
-
-
-
-
-
-
-
 
 
 
