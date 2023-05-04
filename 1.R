@@ -57,7 +57,7 @@ close(gzfile_conn)
 cat(text_content, sep = "\n")
 
 # Defining terms to the files & data
-rpkm_genome <- read.delim("GSE75897_RiboZero_RPKMs.gz", header = FALSE, sep = "\t")
+rpkm_genome <- read.delim("GSE75897_RiboZero_RPKMs.txt", header = FALSE, sep = "\t")
 rpkm_names <- rpkm_genome[,1]
 fasta_genome <- head(readLines("/Users/talahallos/Desktop/research/orf_genomic_1000.fasta"), n = 1000)
 f_genome <- initializeGenomeObject(file = "orf_genomic_1000.fasta")
@@ -90,6 +90,7 @@ for(name in fasta_names[1:10]) {
 }
 
 #now functional, whole thing
+#now giving error?
 for(name in fasta_names) {
   pos <- str_which(rpkm_names, name)
   n_pos <- length(pos)
@@ -115,4 +116,13 @@ for (name in fasta_names) {
 # continuing with AnaCoDa 
 mcmc <- initializeMCMCObject(samples = 5000, thinning = 10, adaptive.width=50)
 runMCMC(mcmc = mcmc, genome = genome, model = model)
+
+# realized was running for "orf_genomic_1000.fasta" file instead of the matches file!!
+# trying to now make the file a list of matches to run the AnaCoDa framework on the matches
+# What I've tried and the errors recieved as a result:
+genome <- initializeGenomeObject(common_names)
+# Error: Expecting a single string value: [type=character; extent=5090]
+genome <- initializeGenomeObject(fasta_match_pos_tbl)
+# Error: Expecting a single string value: [type=list; extent=2].
+
 
