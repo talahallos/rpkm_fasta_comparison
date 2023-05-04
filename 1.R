@@ -125,4 +125,10 @@ genome <- initializeGenomeObject(common_names)
 genome <- initializeGenomeObject(fasta_match_pos_tbl)
 # Error: Expecting a single string value: [type=list; extent=2].
 
+#now trying to make fasta_match_pos_tbl into string to correct the error message
+fasta_match_pos_tbl_as_strings <- as.data.frame(lapply(fasta_match_pos_tbl, as.character))
+
+
+
+
 
