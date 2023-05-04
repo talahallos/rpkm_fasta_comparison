@@ -112,3 +112,7 @@ for (name in fasta_names) {
 }
 
 
+# continuing with AnaCoDa 
+mcmc <- initializeMCMCObject(samples = 5000, thinning = 10, adaptive.width=50)
+runMCMC(mcmc = mcmc, genome = genome, model = model)
+
